@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-// import './config/firebaseConfig';
+import './config/firebaseConfig'; //Connect frontend to backend
 
 ReactDOM.render(
   <React.StrictMode>

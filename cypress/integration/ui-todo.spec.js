@@ -9,6 +9,7 @@ describe("CRUD flow - ui-todo", () => {
     cy.get("[data-cy=header]").should("have.text", "TODO");
   });
 
+  //As they are all the same attributes, have text appended
   it("should be able to add todo", () => {
     cy.get("[data-cy=todo-input__input]").type("Buy Groceries");
     cy.get("[data-cy=todo-input__button").click();
@@ -21,4 +22,13 @@ describe("CRUD flow - ui-todo", () => {
       "Buy GroceriesWrite TODO appSend masks to grandma"
     );
   });
+
+
+  it("should be able to delete todo", () => {
+    //The multiple:true allows clicking through the items in the array serially
+    cy.get("[data-cy=todo-task__button-delete]").click({multiple:true});
+    //Check that the element does not exist
+    cy.get("[data-cy=todo-task__name]").should("not.exist");
+  });
+
 });

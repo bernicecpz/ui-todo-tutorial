@@ -3,15 +3,22 @@ import React, { useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { addTodo } from "../context/todo.actions";
 import { TodoContext } from "../context/TodoContextProvider";
+import { firebaseApi } from "../services/firebaseApi";
+
+//Should you call before dispatch or after?
+// Call API when you dispatch the item, should I put API in reducer?
+// Management of the state, should be light
 
 export const TodoInput = () => {
   const [inputValue, setInputValue] = useState("");
+
   //Tie by the the context
   const { dispatch } = useContext(TodoContext);
 
   const handleAddClick = () => {
     const id = uuidv4();
     dispatch(addTodo(id, inputValue));
+    firebaseApi.addTodo(id, inputValue);
     setInputValue("");
   }
 
