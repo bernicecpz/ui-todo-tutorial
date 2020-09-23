@@ -41,13 +41,14 @@ jobs:
           browser: chrome
           headless: true
       # TODO: Add a stage to generate cypress videos and screenshots as artifacts
-      - name: Download cypress videos and screenshots
+      - name: Download cypress screenshots
         uses: actions/upload-artifact@v1
         if: failure()
         with:
           name: cypress-screenshots
           path: cypress/screenshots
       # Test run video was always captured, so this action uses "always()" condition
+      - name: Upload cypress videos 
         uses: actions/upload-artifact@v1
         if: always()
         with:
