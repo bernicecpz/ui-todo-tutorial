@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Button } from "antd";
 import { deleteTodo, updateTodo, setTodos } from "../context/todo.actions";
 import { TodoContext } from "../context/TodoContextProvider";

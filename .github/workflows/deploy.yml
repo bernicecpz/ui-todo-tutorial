@@ -31,11 +31,28 @@ jobs:
         run: npm install
 
       # TODO: Add a stage for running unit tests
+      - name: Run unit tests
+        run: npm run test
 
       # TODO: Add a stage for running cypress tests
-
+      - name: Cypress Tests
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          headless: true
       # TODO: Add a stage to generate cypress videos and screenshots as artifacts
-
+      - name: Download cypress videos and screenshots
+        uses: actions/upload-artifact@v1
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      # Test run video was always captured, so this action uses "always()" condition
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
       # Stage to deploy application to github page
       - name: Deploy
         run: |
