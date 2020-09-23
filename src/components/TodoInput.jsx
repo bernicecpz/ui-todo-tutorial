@@ -6,11 +6,11 @@ import { TodoContext } from "../context/TodoContextProvider";
 
 export const TodoInput = () => {
   const [inputValue, setInputValue] = useState("");
+  //Tie by the the context
   const { dispatch } = useContext(TodoContext);
 
   const handleAddClick = () => {
     const id = uuidv4();
-
     dispatch(addTodo(id, inputValue));
     setInputValue("");
   }

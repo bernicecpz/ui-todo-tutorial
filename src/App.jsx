@@ -6,12 +6,13 @@ import { TodoInput } from "./components/TodoInput";
 import { TodoList } from "./components/TodoList";
 
 const App = () => {
+  //Only component that is in the ContextProvider will have access to the context
   return (
     <div className="app">
       <Header />
-      <TodoContextProvider>
+      <TodoContextProvider> 
         <TodoInput />
-        <TodoList />
+        <TodoList /> 
       </TodoContextProvider>
     </div>
   );
