@@ -14,7 +14,6 @@ jobs:
     strategy:                           # Define different variations of an environment to run job
       matrix:
         node-version: [12.x]
-
     steps:
       # Stage to fetch a copy of the repository's code under $GITHUB_WORKSPACE
       - name: Checkout repository
@@ -34,6 +33,9 @@ jobs:
       - name: Run unit tests
         run: npm run test
 
+      - name: Start the application
+        run: npm run start
+        
       # TODO: Add a stage for running cypress tests
       - name: Cypress Tests
         uses: cypress-io/github-action@v2
